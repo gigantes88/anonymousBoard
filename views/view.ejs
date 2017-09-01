@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/bootstrap.css">
+<title>익명게시판</title>
+</head>
+<body>
+<div class="container">
+
+  <h3>글 읽기</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>번호 <span><%= matched.id %></span></th>
+        <th>제목 <span><%= matched.title %></span></th>
+        <th>작성자 <span><%= matched.writer %></span></th>
+      </tr>
+      <tr>
+        <th>내용</th>
+        <td><textarea name="" id="" cols="50" rows="10"><%= matched.contents %></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <hr>
+  <br>
+
+  <h3>댓글쓰기</h3>
+  <form action="/view" method="POST">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>내용</th>
+          <td><input type="text" name="contents"></td>
+        </tr>
+        <tr>
+          <th>작성자</th>
+          <td><input type="text" name="writer"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn" type="submit">댓글쓰기</button>
+  </form>
+</div>
+</body>
+</html>

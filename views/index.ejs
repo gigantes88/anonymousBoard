@@ -12,24 +12,22 @@
 <div class="container">
   <h3>익명게시판</h3>
   <table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>번호</th>
-      <th>제목</th>
-      <th>작성자</th>
-      <th>날짜</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% data.forEach(item => { %>
-    <tr>
-      <td scope="row"><%= item.id %></td>
-      <td><a href="/view/<%= item.id %>" target="_blank"><%= item.title %></a></td>
-      <td><%= item.writer %></td>
-      <td></td>
-    </tr>
-    <% }) %>
-  </tbody>
+    <thead class="thead-inverse">
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(item => { %>
+      <tr>
+        <td scope="row"><%= item.id %></td>
+        <td><a href="/view/<%= item.id %>"><%= item.title %></a></td>
+        <td><%= item.writer %></td>
+      </tr>
+      <% }) %>
+    </tbody>
   </table>
 
   <br>
@@ -37,20 +35,24 @@
   <br>
 
   <h3>글쓰기</h3>
-  <form action="/" method="POST">
+  <form action="/view" method="POST">
     <table class="table">
       <tbody>
         <tr>
           <th>제목</th>
-          <td><input type="text"></td>
+          <td><input type="text" name="title" value="제목이지롱"></td>
         </tr>
         <tr>
           <th>내용</th>
-          <td><input type="text"></td>
+          <td><input type="text" name="contents" value="내용이지롱"></td>
+        </tr>
+        <tr>
+          <th>작성자</th>
+          <td><input type="text" name="writer" value="작성자이지롱"></td>
         </tr>
       </tbody>
     </table>
-    <button class="btn" type="submit">글쓰기</button>
+    <button class="btn btn-outline-success" type="submit">글쓰기</button>
   </form>
 </div>
 </body>
