@@ -15,15 +15,27 @@
   <table class="table">
     <tbody>
       <tr>
-        <th>번호 <span><%= matched.id %></span></th>
-        <th>제목 <span><%= matched.title %></span></th>
-        <th>작성자 <span><%= matched.writer %></span></th>
+        <th>번호 <span class="ml-3 font-weight-normal"><%= matched.id %></span></th>
+        <th>제목 <span class="ml-3 font-weight-normal"><%= matched.title %></span></th>
+        <th>작성자 <span class="ml-3 font-weight-normal"><%= matched.writer %></span></th>
       </tr>
       <tr>
         <th>내용</th>
-        <td><textarea name="" id="" cols="50" rows="10"><%= matched.contents %></textarea></td>
+        <td colspan="2"><textarea name="" id="" cols="40" rows="10"><%= matched.contents %></textarea></td>
       </tr>
     </tbody>
+  </table>
+
+  <br>
+  <hr>
+  <br>
+
+  <h3>댓글</h3>
+  <table class="table">
+    <tr>
+      <td>댓글제목</td>    
+      <td>댓글내용</td>    
+    </tr>
   </table>
 
   <br>
@@ -44,7 +56,8 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn" type="submit">댓글쓰기</button>
+    <button class="btn btn-outline-success" type="submit">댓글쓰기</button>
+    <a href="/" class="btn btn-outline-warning">목록</a>
   </form>
 </div>
 </body>

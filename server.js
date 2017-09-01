@@ -19,22 +19,26 @@ app.get('/view', (req, res) => {
   res.render('view', {data});
 });
 
+// write 화면 render
+app.get('/write', (req, res) => {
+  res.render('write');
+});
+
 // view 화면 가져오기
 app.get('/view/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const matched = [...data].find(item => item.id === id);
   
   if (matched) {
-    res.render('view.ejs', {matched});
+    res.render('view', {matched});
   } else {
     res.status(404);
     res.send('404 떠서 기분이 안좋다');
   }
-
 });
 
 // 글쓰기
-app.post('/view', bodyParserMiddleware, (req, res) => {
+app.post('/', bodyParserMiddleware, (req, res) => {
   let id = data.length + 1;
   const title = req.body.title;
   const contents = req.body.contents;

@@ -29,31 +29,7 @@
       <% }) %>
     </tbody>
   </table>
-
-  <br>
-  <hr>
-  <br>
-
-  <h3>글쓰기</h3>
-  <form action="/view" method="POST">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>제목</th>
-          <td><input type="text" name="title" value="제목이지롱"></td>
-        </tr>
-        <tr>
-          <th>내용</th>
-          <td><input type="text" name="contents" value="내용이지롱"></td>
-        </tr>
-        <tr>
-          <th>작성자</th>
-          <td><input type="text" name="writer" value="작성자이지롱"></td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-outline-success" type="submit">글쓰기</button>
-  </form>
+  <a href="/write" class="btn btn-outline-success">글쓰기</a>
 </div>
 </body>
 </html>
