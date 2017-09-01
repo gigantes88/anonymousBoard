@@ -10,22 +10,48 @@
 </head>
 <body>
 <div class="container">
+  <h3>익명게시판</h3>
   <table class="table">
   <thead class="thead-inverse">
     <tr>
       <th>번호</th>
       <th>제목</th>
+      <th>작성자</th>
       <th>날짜</th>
     </tr>
   </thead>
   <tbody>
+    <% data.forEach(item => { %>
     <tr>
-      <td scope="row">1</td>
-      <td>익명게시판입니다.</td>
-      <td>2017.08.30</td>
+      <td scope="row"><%= item.id %></td>
+      <td><a href="/view/<%= item.id %>" target="_blank"><%= item.title %></a></td>
+      <td><%= item.writer %></td>
+      <td></td>
     </tr>
+    <% }) %>
   </tbody>
   </table>
+
+  <br>
+  <hr>
+  <br>
+
+  <h3>글쓰기</h3>
+  <form action="/" method="POST">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>제목</th>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn" type="submit">글쓰기</button>
+  </form>
 </div>
 </body>
 </html>
