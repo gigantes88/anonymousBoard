@@ -17,6 +17,11 @@
     <button type="submit" class="btn btn-outline-danger">삭제</button>
   </form>
   <table class="table">
+    <colgroup>
+      <col width="10%">
+      <col width="60%">
+      <col width="20%">
+    </colgroup>
     <tbody>
       <tr>
         <th>번호 <span class="ml-3 font-weight-normal"><%= matchedBoard.bId %></span></th>
@@ -36,10 +41,18 @@
 
   <h3>댓글리스트</h3>
   <table class="table">
+    <colgroup>
+      <col width="10%">
+      <col width="40%">
+      <col width="10%">
+      <col width="40%">
+    </colgroup>
     <tbody>
       <% matchedComments.forEach(cItem => { %>
       <tr>
+        <th>댓글내용</th>
         <td><%= cItem.cComment %></td>    
+        <th>댓글작성자</th>
         <td><%= cItem.cWriter %></td>    
       </tr>
       <% }) %>
@@ -53,21 +66,27 @@
   <h3>댓글쓰기</h3>
   <form action="/view/<%= matchedBoard.bId %>" method="POST">
     <table class="table">
+      <colgroup>
+        <col width="10%">
+        <col width="90%">
+      </colgroup>
       <tbody>
         <tr>
           <th>내용</th>
-          <td><input type="text" name="cComment" placeholder="댓글을 입력하세요" value="댓글이지롱"></td>
+          <td><input type="text" name="cComment" placeholder="댓글을 입력하세요" class="w90"></td>
         </tr>
         <tr>
           <th>작성자</th>
-          <td><input type="text" name="cWriter" placeholder="댓글 작성자를 입력하세요" value="댓글이지롱"></td>
+          <td><input type="text" name="cWriter" placeholder="댓글 작성자를 입력하세요" class="w20"></td>
         </tr>
       </tbody>
     </table>
     <button class="btn btn-outline-success" type="submit">댓글쓰기</button>
     <a href="/" class="btn btn-outline-warning">목록</a>
   </form>
-  
 </div>
+<br>
+<br>
+<br>
 </body>
 </html>

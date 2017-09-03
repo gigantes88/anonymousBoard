@@ -15,18 +15,22 @@
   <h3>새글쓰기</h3>
   <form action="/write" method="POST">
     <table class="table">
+      <colgroup>
+        <col width="10%">
+        <col width="90%">
+      </colgroup>
       <tbody>
         <tr>
           <th>제목</th>
-          <td><input type="text" name="bTitle" placeholder="제목을 입력하세요" value="제목이지롱"></td>
+          <td><input type="text" name="bTitle" class="w90" placeholder="제목을 입력하세요"></td>
         </tr>
         <tr>
           <th>내용</th>
-          <td><textarea type="text" name="bContents" cols="45" rows="5"placeholder="내용을 입력하세요">내용이지롱</textarea></td>
+          <td><textarea type="text" name="bContents" class="w90" rows="5"placeholder="내용을 입력하세요"></textarea></td>
         </tr>
         <tr>
           <th>작성자</th>
-          <td><input type="text" name="bWriter" placeholder="작성자를 입력하세요" value="작성자이지롱"></td>
+          <td><input type="text" name="bWriter" class="w20" placeholder="작성자를 입력하세요"></td>
         </tr>
       </tbody>
     </table>
