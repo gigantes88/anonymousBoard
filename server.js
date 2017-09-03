@@ -1,10 +1,21 @@
+// -------모듈 로딩-------
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const basicAuth = require('express-basic-auth');
 const app = express();
 
+
+// -------미들웨어 로딩-------
+const basicAuthMiddleware = basicAuth({
+  users: { 'admin': '1234' },
+  challenge: true,
+  realm: 'Imb4T3st4pp'
+})
 const bodyParserMiddleware = bodyParser.urlencoded({ extended: false });  // body-parser 미들웨어 설정
 
-// db
+
+// -------db-------
 const board = [
   { bId: 1, 
     bTitle: '제목이지롱1', 
@@ -31,20 +42,20 @@ const comments = [
   },
 ];
 
+
+// -------앱 사용-------
 app.set('view engine', 'ejs');  // ejs 설정
 app.use('/static', express.static('./public')); // static 설정
 
-// index 화면 GET
+// ***index 화면 GET***
 app.get('/', (req, res) => {
   res.render('index', { board });
 });
-
-// write 화면 GET
+// ***write 화면 GET***
 app.get('/write', (req, res) => {
   res.render('write');
 });
-
-// view 화면 GET
+// ***view 화면 GET***
 app.get('/view/:bId', (req, res) => {
   const bId = parseInt(req.params.bId); // string -> number
   const matchedBoard = [...board].find(bItem => bItem.bId === bId); // bId와 일치한 글 내용
@@ -57,8 +68,7 @@ app.get('/view/:bId', (req, res) => {
     res.send('404 기분이 안좋다');
   }
 });
-
-// 익명게시판 글쓰기 POST
+// ***익명게시판 글쓰기 POST***
 app.post('/write', bodyParserMiddleware, (req, res) => {
   let bId = board.length + 1;
   const bTitle = req.body.bTitle;
@@ -73,8 +83,7 @@ app.post('/write', bodyParserMiddleware, (req, res) => {
     res.send('400 잘못된 요청입니다. 제대로 입력하세요!');
   }
 });
-
-// 익명게시판 댓글쓰기 POST
+// ***익명게시판 댓글쓰기 POST***
 app.post('/view/:bId', bodyParserMiddleware, (req, res) => {
   let bId = req.params.bId; // uri에 있는 보드 아이디값
   let cId = parseInt(bId);  // 댓글 아이디와 보드 아이디를 일치시키기 위해 cId에 number로 저장
@@ -93,6 +102,7 @@ app.post('/view/:bId', bodyParserMiddleware, (req, res) => {
 });
 
 
+// -------앱 리슨-------
 app.listen(3000, () => {
   console.log('listening to 3000 port');
 });
