@@ -46,9 +46,14 @@ const comments = [
 // -------앱 사용-------
 app.set('view engine', 'ejs');  // ejs 설정
 app.use('/static', express.static('./public')); // static 설정
+app.use(morgan('tiny'));  // morgan 설정
 
 // ***index 화면 GET***
 app.get('/', (req, res) => {
+  res.render('index', { board });
+});
+// ***로그인 화면 GET*** 해결못한 부분
+app.get('/auth', basicAuthMiddleware, (req, res) => {
   res.render('index', { board });
 });
 // ***write 화면 GET***
@@ -65,7 +70,7 @@ app.get('/view/:bId', (req, res) => {
     res.render('view', { matchedBoard, matchedComments });
   } else {
     res.status(404);
-    res.send('404 기분이 안좋다');
+    res.send('404가 왜 뜰까?');
   }
 });
 // ***익명게시판 글쓰기 POST***
@@ -100,7 +105,13 @@ app.post('/view/:bId', bodyParserMiddleware, (req, res) => {
     res.send('400 잘못된 요청입니다. 댓글을 제대로 입력하세요!');
   }
 });
+// ***익명게시판 글삭제 POST***
+app.post('/view/:bId/del', bodyParserMiddleware, (req, res) => {
+  let bId = parseInt(req.params.bId); // uri에 있는 보드 아이디값
+  board.splice(bId - 1, 1);
 
+  res.redirect('/');
+});
 
 // -------앱 리슨-------
 app.listen(3000, () => {
