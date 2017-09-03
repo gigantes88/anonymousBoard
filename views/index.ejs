@@ -10,6 +10,8 @@
 </head>
 <body>
 <div class="container">
+  <br>
+  <br>
   <h3>익명게시판</h3>
   <table class="table">
     <thead class="thead-inverse">
@@ -20,13 +22,13 @@
       </tr>
     </thead>
     <tbody>
-      <% data.forEach(item => { %>
+      <% board.forEach(bItem => { %>
       <tr>
-        <td scope="row"><%= item.id %></td>
-        <td><a href="/view/<%= item.id %>"><%= item.title %></a></td>
-        <td><%= item.writer %></td>
+        <td scope="row"><%= bItem.bId %></td>
+        <td><a href="/view/<%= bItem.bId %>"><%= bItem.bTitle %></a></td>
+        <td><%= bItem.bWriter %></td>
       </tr>
-      <% }) %>
+      <% }); %>
     </tbody>
   </table>
   <a href="/write" class="btn btn-outline-success">글쓰기</a>
