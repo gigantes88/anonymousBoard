@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 });
 // ***로그인 화면 GET*** 해결못한 부분
 app.get('/auth', basicAuthMiddleware, (req, res) => {
-  res.render('index', { board });
+  res.render('auth', { board });
 });
 // ***write 화면 GET***
 app.get('/write', (req, res) => {
@@ -101,12 +101,12 @@ app.post('/view/:bId', bodyParserMiddleware, (req, res) => {
     res.send('400 잘못된 요청입니다. 댓글을 제대로 입력하세요!');
   }
 });
-// ***익명게시판 글삭제 POST***
-app.post('/view/:bId/del', bodyParserMiddleware, (req, res) => {
-  let bId = parseInt(req.params.bId); // uri에 있는 보드 아이디값
-  board.splice(bId - 1, 1);
+// ***익명게시판 관리자 글삭제 POST***
+app.post('/auth/:bId', bodyParserMiddleware, (req, res) => {
+  const bId = req.params.bId;
+  board.splice(bId - 1, 1); // 해당 인덱스의 엘리먼트를 스플라이스
 
-  res.redirect('/');
+  res.redirect('/auth');
 });
 
 // -------앱 리슨-------
