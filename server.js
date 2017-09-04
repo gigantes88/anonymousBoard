@@ -48,7 +48,7 @@ app.use(morgan('tiny'));  // morgan 설정
 app.get('/', (req, res) => {
   res.render('index', { board });
 });
-// ***로그인 화면 GET*** 해결못한 부분
+// ***로그인 화면 GET***
 app.get('/auth', basicAuthMiddleware, (req, res) => {
   res.render('auth', { board });
 });
