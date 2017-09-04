@@ -3,4 +3,4 @@
 - 미해결 부분
   - 최신 글이 리스트의 맨 위에 올리기
 
-[익명게시판 바로가기](https://anonymousboard-ucpyyzojde.now.sh/)
+[익명게시판 바로가기](https://anonymousboard-voymvpwieg.now.sh/)
