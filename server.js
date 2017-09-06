@@ -59,8 +59,8 @@ app.get('/write', (req, res) => {
 // ***view 화면 GET***
 app.get('/view/:bId', (req, res) => {
   const bId = parseInt(req.params.bId); // string -> number
-  const matchedBoard = [...board].find(bItem => bItem.bId === bId); // bId와 일치한 글 내용
-  const matchedComments = [...comments].filter(cItem => cItem.cId === bId); // cId와 일치한 댓글 내용
+  const matchedBoard = board.find(bItem => bItem.bId === bId); // bId와 일치한 글 내용
+  const matchedComments = comments.filter(cItem => cItem.cId === bId); // cId와 일치한 댓글 내용
 
   if (matchedBoard) {
     res.render('view', { matchedBoard, matchedComments });
