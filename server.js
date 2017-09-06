@@ -71,7 +71,7 @@ app.get('/view/:bId', (req, res) => {
 });
 // ***익명게시판 글쓰기 POST***
 app.post('/write', bodyParserMiddleware, (req, res) => {
-  let bId = board.length + 1;
+  const bId = board[board.length -1].bId + 1;
   const bTitle = req.body.bTitle;
   const bContents = req.body.bContents;
   const bWriter = req.body.bWriter;
