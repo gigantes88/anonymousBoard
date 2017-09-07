@@ -22,6 +22,10 @@ const board = [
   },
   { bId: 3, bTitle: '안녕하세요3', bContents: '냉무', bWriter: '무명'
   },
+  { bId: 4, bTitle: '안녕하세요4', bContents: '냉무', bWriter: '무명'
+  },
+  { bId: 5, bTitle: '안녕하세요5', bContents: '냉무', bWriter: '무명'
+  },
 ];
 const comments = [
   { cId: 1,
@@ -103,14 +107,14 @@ app.post('/view/:bId', bodyParserMiddleware, (req, res) => {
 });
 // ***익명게시판 관리자 글삭제 POST***
 app.post('/auth/:bId', bodyParserMiddleware, (req, res) => {
-  const bId = req.params.bId;
-  const delIndex = board.findIndex(bItem => bItem.bId === bId);
-  if (delIndex) {
-    board.splice(delIndex, 1); // 해당 인덱스의 엘리먼트를 스플라이스
-    res.redirect('/auth');
-  } else { 
-    return res.send(404, '404가 왜 나올까?');
+  const bId = parseInt(req.params.bId); // 파라미터에서 갖고 온 값이라 스트링. 따라서 넘버로 바꿔준다.
+  const matchedIndex = board.findIndex(bItem => bItem.bId === bId); // 파라미터에서 갖고온 id 값과 board에 있는 id와 비교해 일치하는 index 값을 가져온다.
+  
+  if (matchedIndex === false) {  // 일치하는 값이 없으면 404 에러 보내준다.
+    res.send(404, '404 Not Found');
   }
+  board.splice(matchedIndex, 1);  // 일치한 값은 삭제한다.
+  res.redirect('/auth');
 });
 
 // -------앱 리슨-------
