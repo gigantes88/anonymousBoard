@@ -21,10 +21,9 @@ app.post('/auth/:bId', bodyParserMiddleware, (req, res) => {
   const bId = parseInt(req.params.bId);
   const delIndex = board.findIndex(bItem => bItem.bId === Id);
   if (delIndex) { // 여기서 문제가 생김
-  // delIndex를 그대로 넣어버리면
+  // if 구문 안에 delIndex를 그대로 넣었을 때 문제가 생겼다.
   // 만약 delIndex 값이 0이면 (1번 게시글 삭제시)
-  // false가 되버려서 else 구문으로 가버려
-  // 삭제되지 않는다.
+  // 0은 false 이기 때문에 else 구문으로 가버려 삭제되지 않는다.
   // if 문안에 1, 0, -1 들어가는 것을 잘 확인하자.
     board.splice(delIndex, 1);
     res.redirect('/auth');
